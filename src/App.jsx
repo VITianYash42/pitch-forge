@@ -103,6 +103,11 @@ export default function App() {
       ) : (
         <InputForm onSubmit={handleAnalyze} isLoading={loading} />
       )}
+
+      <footer className="mt-8 border-t border-zinc-800/80 bg-[#0b0b0b]/80 px-4 py-5 text-center text-xs tracking-wide text-zinc-400">
+        <p>&copy; {new Date().getFullYear()} PitchForge. Made by team Binary Baniyas.</p>
+        <p className="mt-1 text-zinc-500">Yash Singhal and Aditya Mittal</p>
+      </footer>
       </div>
     </div>
   );

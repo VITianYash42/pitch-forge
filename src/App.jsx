@@ -20,6 +20,30 @@ export default function App() {
   const handleAnalyze = async (projectData) => {
     setLoading(true);
     setError(null);
+    
+    // THE DEMO BYPASS: If you type "DEMO" as the project name, it skips the API.
+    if (projectData.name.toUpperCase() === "DEMO") {
+      setTimeout(() => {
+        setResult({
+          "tagline": "Stop building side projects that collect dust.",
+          "monetization_paths": [
+            { "name": "SaaS Subscription", "description": "Charge a monthly fee for premium features.", "effort": "Medium", "timeline": "2-4 weeks" },
+            { "name": "B2B Licensing", "description": "Sell the core engine to universities.", "effort": "High", "timeline": "2 months" },
+            { "name": "One-Time Purchase", "description": "Lifetime access for a flat fee.", "effort": "Low", "timeline": "1 week" }
+          ],
+          "target_users": [
+            { "persona": "Student Developers", "pain_point": "Can't monetize projects", "willingness_to_pay": "Low" },
+            { "persona": "Bootcamp Grads", "pain_point": "Need portfolio pieces that generate revenue", "willingness_to_pay": "Medium" },
+            { "persona": "Hackathon Organizers", "pain_point": "Need tools to evaluate commercial viability", "willingness_to_pay": "High" }
+          ],
+          "pricing_suggestion": { "model": "Freemium", "free_tier": "1 Analysis per month", "paid_tier": "Unlimited + Export", "suggested_price": "$5/month" },
+          "cold_pitch": "Hey! I built an AI tool that turns student projects into revenue streams. Let me know if you want a quick demo."
+        });
+        setLoading(false);
+      }, 800); // Fake loading delay
+      return;
+    }
+
     try {
       const data = await analyzeProject(projectData);
       setResult(data);

@@ -1,34 +1,22 @@
-# PitchForge
+# PitchForge - AI Monetization Strategist
 
-PitchForge is an AI-powered monetization strategist for student projects.
+## Overview
+PitchForge is an AI-powered platform that converts student project descriptions into actionable monetization strategies. It generates target personas, pricing models, and cold pitches instantly.
 
-## Setup
+## Technology Stack
+* Frontend: React (Vite), Tailwind CSS
+* AI Integration: Google Gemini 2.5 Flash API
+* Styling: Lucide React Icons
 
-1. Install dependencies:
+## Local Setup Instructions
+1. Clone the repository.
+2. Run `npm install` to install dependencies.
+3. Create a `.env` file in the root directory.
+4. Add your API key: `VITE_GEMINI_API_KEY=your_key_here`
+5. Run `npm run dev` to start the local server.
 
-```bash
-npm install
-```
-
-2. Add your Anthropic API key to `.env`:
-
-```env
-VITE_ANTHROPIC_API_KEY=your_anthropic_api_key_here
-```
-
-3. Start the app:
-
-```bash
-npm run dev
-```
-
-## Build
-
-```bash
-npm run build
-```
-
-## Notes
-
-- Frontend-only API calls are enabled with the required `anthropic-dangerous-direct-browser-calls` header.
-- Model used: `claude-sonnet-4-20250514`.
+## VibeHack AI Disclosure
+* **Tools Used:** Google Gemini API, Gemini AI Assistant.
+* **How they were used:** * The Gemini 2.5 Flash API acts as the core engine, processing the user's project description via a strictly formatted system prompt to return structured JSON data.
+  * The Gemini AI Assistant was used during development to architect the React component structure, generate the Tailwind CSS styling, and configure the API fetch logic.
+* **AI-Assisted Parts:** The entire application logic and UI components were built with AI assistance, while the conceptual architecture, prompt engineering, and feature scoping were human-directed.

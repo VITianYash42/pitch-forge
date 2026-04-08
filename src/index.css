@@ -21,3 +21,206 @@ body,
   margin: 0;
   min-height: 100%;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
+@keyframes results-enter {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.results-enter {
+  animation: results-enter 700ms ease-out both;
+}
+
+.bg-dynamic-grid {
+  background-image:
+    linear-gradient(to right, rgba(229, 62, 62, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(229, 62, 62, 0.08) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 92%);
+}
+
+.bg-aurora {
+  background:
+    radial-gradient(circle at 18% 16%, rgba(229, 62, 62, 0.2), transparent 45%),
+    radial-gradient(circle at 80% 12%, rgba(255, 255, 255, 0.08), transparent 34%),
+    radial-gradient(circle at 55% 80%, rgba(229, 62, 62, 0.16), transparent 40%);
+  animation: aurora-shift 16s ease-in-out infinite alternate;
+}
+
+.bg-vignette {
+  background: radial-gradient(circle at center, transparent 45%, rgba(0, 0, 0, 0.58) 100%);
+}
+
+.floating-particle {
+  position: absolute;
+  bottom: -10%;
+  width: 4px;
+  height: 4px;
+  border-radius: 9999px;
+  background: rgba(229, 62, 62, 0.45);
+  box-shadow: 0 0 12px rgba(229, 62, 62, 0.45);
+  animation: particle-float linear infinite;
+}
+
+@keyframes aurora-shift {
+  0% {
+    transform: translate3d(-1.5%, 0, 0) scale(1);
+    filter: hue-rotate(0deg);
+  }
+  50% {
+    transform: translate3d(1.2%, -1.5%, 0) scale(1.03);
+    filter: hue-rotate(8deg);
+  }
+  100% {
+    transform: translate3d(-1%, 1.2%, 0) scale(1.01);
+    filter: hue-rotate(-6deg);
+  }
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translate3d(0, 0, 0) scale(0.8);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(20px, -120vh, 0) scale(1.15);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-aurora,
+  .floating-particle,
+  .results-enter {
+    animation: none !important;
+  }
+}
+
+.ui-fade-up {
+  opacity: 0;
+  transform: translateY(10px);
+  animation: ui-fade-up 620ms ease-out forwards;
+}
+
+.forge-type-cursor {
+  width: 0.16em;
+  height: 0.9em;
+  margin-left: 0.08em;
+  border-radius: 2px;
+  background: rgba(229, 62, 62, 0.95);
+  box-shadow: 0 0 14px rgba(229, 62, 62, 0.5);
+  animation: cursor-blink 0.85s steps(1, end) infinite;
+}
+
+.input-ambient-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(48px);
+  opacity: 0.35;
+  animation: orb-drift 12s ease-in-out infinite alternate;
+}
+
+.input-ambient-orb-1 {
+  width: 360px;
+  height: 360px;
+  left: -80px;
+  top: 18%;
+  background: radial-gradient(circle, rgba(229, 62, 62, 0.34) 0%, rgba(229, 62, 62, 0) 68%);
+}
+
+.input-ambient-orb-2 {
+  width: 300px;
+  height: 300px;
+  right: -100px;
+  top: 12%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 70%);
+  animation-delay: 1.5s;
+}
+
+.input-ambient-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(229, 62, 62, 0.06) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(229, 62, 62, 0.06) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(circle at center, black 38%, transparent 92%);
+}
+
+.input-scanlines {
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.015) 0,
+    rgba(255, 255, 255, 0.015) 1px,
+    transparent 2px,
+    transparent 5px
+  );
+  mix-blend-mode: soft-light;
+  animation: scanline-shift 7s linear infinite;
+}
+
+@keyframes ui-fade-up {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cursor-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  50.1%,
+  100% {
+    opacity: 0.15;
+  }
+}
+
+@keyframes orb-drift {
+  0% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(14px, -10px, 0) scale(1.05);
+  }
+  100% {
+    transform: translate3d(-10px, 8px, 0) scale(0.97);
+  }
+}
+
+@keyframes scanline-shift {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(12px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ui-fade-up,
+  .forge-type-cursor,
+  .input-ambient-orb,
+  .input-scanlines {
+    animation: none !important;
+  }
+}

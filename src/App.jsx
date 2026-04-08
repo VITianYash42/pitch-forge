@@ -7,6 +7,7 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [result, setResult] = useState(null);
+  const particles = Array.from({ length: 12 }, (_, i) => i);
 
   const handleCopy = async (text) => {
     if (!text) return;
@@ -60,7 +61,25 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white selection:bg-[#e53e3e] selection:text-white">
+    <div className="relative min-h-screen overflow-hidden bg-[#0a0a0a] text-white selection:bg-[#e53e3e] selection:text-white">
+      <div className="pointer-events-none absolute inset-0 -z-0 bg-dynamic-grid opacity-50" />
+      <div className="pointer-events-none absolute inset-0 -z-0 bg-aurora" />
+      <div className="pointer-events-none absolute inset-0 -z-0 bg-vignette" />
+      <div className="pointer-events-none absolute inset-0 -z-0 overflow-hidden">
+        {particles.map((particle) => (
+          <span
+            key={particle}
+            className="floating-particle"
+            style={{
+              left: `${6 + particle * 8}%`,
+              animationDelay: `${(particle % 6) * 0.9}s`,
+              animationDuration: `${10 + (particle % 5) * 2}s`,
+            }}
+          />
+        ))}
+      </div>
+
+      <div className="relative z-10">
       {error && (
         <div className="fixed top-4 right-4 z-50 bg-red-900 border border-red-500 text-white px-6 py-4 shadow-xl max-w-md">
           <div className="font-bold mb-1">System Error</div>
@@ -84,6 +103,7 @@ export default function App() {
       ) : (
         <InputForm onSubmit={handleAnalyze} isLoading={loading} />
       )}
+      </div>
     </div>
   );
 }

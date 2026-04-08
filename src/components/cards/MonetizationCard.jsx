@@ -9,11 +9,11 @@ export default function MonetizationCard({ path }) {
 
   return (
     <article className="rounded-xl border border-zinc-800 bg-[#0d0d0d] p-5">
-      <h4 className="text-lg font-semibold text-zinc-100">{path.name}</h4>
-      <p className="mt-3 min-h-24 text-sm leading-relaxed text-zinc-300">{path.description}</p>
+      <h4 className="text-lg font-semibold tracking-tight text-zinc-100">{path.name}</h4>
+      <p className="mt-3 text-sm leading-7 text-zinc-300">{path.description}</p>
       <div className="mt-4 flex items-center justify-between gap-3 text-xs">
         <span className={`rounded-full border px-3 py-1 font-medium ${badgeStyle}`}>{path.effort}</span>
-        <span className="text-zinc-400">{path.timeline}</span>
+        <span className="rounded-full border border-zinc-700 px-3 py-1 text-zinc-400">{path.timeline}</span>
       </div>
     </article>
   );

@@ -27,9 +27,10 @@ export default function PersonaCard({ user }) {
         <div className="flex h-10 w-10 items-center justify-center rounded-full border border-[#e53e3e]/40 bg-[#e53e3e]/10 text-sm font-semibold text-[#ff6b6b]">
           {getInitials(user.persona)}
         </div>
-        <h4 className="text-lg font-semibold text-zinc-100">{user.persona}</h4>
+        <h4 className="text-lg font-semibold tracking-tight text-zinc-100">{user.persona}</h4>
       </div>
-      <p className="mt-4 text-sm leading-relaxed text-zinc-300">{user.pain_point}</p>
+      <p className="mt-2 text-xs tracking-widest uppercase text-zinc-500">Pain Point</p>
+      <p className="mt-2 text-sm leading-7 text-zinc-300">{user.pain_point}</p>
       <span className={`mt-4 inline-flex rounded-full border px-3 py-1 text-xs font-medium ${badgeStyle}`}>
         Willingness to pay: {user.willingness_to_pay}
       </span>

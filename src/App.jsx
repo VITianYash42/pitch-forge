@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { analyzeProject } from './api/gemini';
+import { analyzeProject } from './api/cohere';
 import InputForm from './components/InputForm';
 import ResultsView from './components/ResultsView';
 

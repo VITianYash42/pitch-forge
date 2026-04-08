@@ -4,6 +4,7 @@ import PersonaCard from './cards/PersonaCard';
 import PitchCard from './cards/PitchCard';
 import PricingCard from './cards/PricingCard';
 import TaglineCard from './cards/TaglineCard';
+import CustomerReachCard from './cards/CustomerReachCard';
 import VisualInsights from './cards/VisualInsights';
 
 const SECTIONS = [
@@ -11,6 +12,7 @@ const SECTIONS = [
   { id: 'visuals', label: 'Visuals' },
   { id: 'monetization', label: 'Monetization' },
   { id: 'users', label: 'Target Users' },
+  { id: 'reach', label: 'Reach' },
   { id: 'pricing', label: 'Pricing' },
   { id: 'pitch', label: 'Cold Pitch' },
 ];
@@ -69,6 +71,9 @@ export default function ResultsView({ result, onCopySection, onCopyAll, onReset 
       onCopyAll(text, label);
     }
   };
+
+  const userGridClass =
+    safeResult.target_users.length <= 2 ? 'grid gap-4 md:grid-cols-2' : 'grid gap-4 md:grid-cols-2 xl:grid-cols-3';
 
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -162,7 +167,7 @@ export default function ResultsView({ result, onCopySection, onCopyAll, onReset 
       </section>
 
       <section id="users" className="scroll-mt-32 rounded-2xl border border-zinc-800 bg-[#111111]/90 p-6 transition-all duration-300 hover:-translate-y-1 hover:border-[#e53e3e]/50 hover:shadow-[0_4px_20px_rgba(229,62,62,0.1)]">
-        <div className="mb-4 flex items-center justify-between">
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <p className="text-xs uppercase tracking-widest text-zinc-400">Target Users</p>
           <button
             type="button"
@@ -172,17 +177,19 @@ export default function ResultsView({ result, onCopySection, onCopyAll, onReset 
             Copy section
           </button>
         </div>
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+        <div className={userGridClass}>
           {safeResult.target_users.map((user, index) => (
             <div
               key={`${user.persona}-${index}`}
-              className="rounded-xl border border-transparent transition-all duration-300 hover:-translate-y-1 hover:border-[#e53e3e]/50 hover:shadow-[0_4px_20px_rgba(229,62,62,0.1)]"
+              className="h-full rounded-xl border border-transparent transition-all duration-300 hover:-translate-y-1 hover:border-[#e53e3e]/50 hover:shadow-[0_4px_20px_rgba(229,62,62,0.1)]"
             >
               <PersonaCard user={user} />
             </div>
           ))}
         </div>
       </section>
+
+      <CustomerReachCard users={safeResult.target_users} />
 
       <div className="grid gap-6 xl:grid-cols-[2fr_1fr]">
         <div id="pricing" className="scroll-mt-32 rounded-2xl border border-transparent transition-all duration-300 hover:-translate-y-1 hover:border-[#e53e3e]/50 hover:shadow-[0_4px_20px_rgba(229,62,62,0.1)]">

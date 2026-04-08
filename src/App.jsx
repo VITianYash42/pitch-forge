@@ -61,7 +61,7 @@ export default function App() {
   };
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-[#0a0a0a] text-white selection:bg-[#e53e3e] selection:text-white">
+    <div className="relative min-h-screen overflow-x-hidden bg-[#0a0a0a] text-white selection:bg-[#e53e3e] selection:text-white">
       <div className="pointer-events-none absolute inset-0 -z-0 bg-dynamic-grid opacity-50" />
       <div className="pointer-events-none absolute inset-0 -z-0 bg-aurora" />
       <div className="pointer-events-none absolute inset-0 -z-0 bg-vignette" />
